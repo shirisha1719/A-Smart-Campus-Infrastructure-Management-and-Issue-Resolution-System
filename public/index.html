@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fix My Campus | Smart Campus Infrastructure Management & Issue Resolution System</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231e3a8a'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Modular Stylesheets -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="stylesheet" href="/css/map.css" />
+</head>
+<body>
+
+  <!-- ==============================================================
+       1. PUBLIC LANDING PAGE (Visible when not logged in or on Home)
+       ============================================================== -->
+  <div id="publicLandingView" class="landing-view">
+    
+    <!-- Public Navbar -->
+    <header class="public-navbar">
+      <div class="public-brand">
+        <div class="public-brand-logo">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <div>
+          <span>Fix My Campus</span>
+          <div style="font-size: 0.68rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em;">SESD Smart System</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="public-nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#howItWorks">How It Works</a></li>
+          <li><a href="#categories">Issue Categories</a></li>
+          <li><a href="#about">About SESD</a></li>
+        </ul>
+      </nav>
+
+      <div class="public-nav-auth">
+        <button class="btn btn-outline btn-sm" onclick="App.openLoginModal()">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Login
+        </button>
+        <button class="btn btn-accent btn-sm" onclick="App.openRegisterModal()">
+          <i class="fa-solid fa-user-plus"></i> Register
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="landing-hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-badge-tag">
+          <i class="fa-solid fa-sparkles"></i> SESD System Designs Project 2026
+        </div>
+        <h1 class="hero-main-title">
+          Making Your Campus Better, <br />
+          <span class="gradient-text">One Report at a Time.</span>
+        </h1>
+        <p class="hero-main-subtitle">
+          Report campus problems, track progress, and help create a safer, cleaner, smarter campus.
+        </p>
+
+        <div class="hero-cta-btns">
+          <button class="btn btn-accent btn-lg" onclick="App.handleHeroReportClick()">
+            <i class="fa-solid fa-plus-circle"></i> Report an Issue
+          </button>
+          <a href="#features" class="btn btn-secondary btn-lg">
+            <i class="fa-solid fa-compass"></i> Explore Platform
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-graphic-card">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+          <div style="font-weight: 800; font-size: 1rem; color: var(--text-main);">
+            <i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> Real-Time Operations Desk
+          </div>
+          <span class="badge status-resolved">
+            <span class="badge-dot"></span> System Online
+          </span>
+        </div>
+
+        <img src="/assets/images/sample-resolved-wifi.svg" alt="Campus Resolution Example" style="width: 100%; border-radius: var(--radius-md); margin-bottom: 1rem; border: 1px solid var(--border-color);" />
+        
+        <div style="background: var(--secondary-light); padding: 1rem; border-radius: var(--radius-md);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="font-size: 0.88rem;">#FMC-2026-0004: Campus WiFi Restored</strong>
+            <span class="badge priority-critical">High Impact</span>
+          </div>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">
+            Reported at North Residence Hall. Technician Alex Rivera isolated switch fault, re-flashed AP firmware, and restored 250 Mbps speeds within 45 minutes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Impact & Issue Statistics -->
+    <div class="hero-stats-banner">
+      <div class="hero-stat-item">
+        <div class="hero-stat-number" id="publicStatTotal">140+</div>
+        <div class="hero-stat-label">Issues Resolved</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-number" id="publicStatActive">8</div>
+        <div class="hero-stat-label">Active Work Orders</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-number" id="publicStatRate">94.8%</div>
+        <div class="hero-stat-label">Resolution Rate</div>
+      </div>
+      <div class="hero-stat-item">
+        <div class="hero-stat-number" id="publicStatAvgTime">&lt; 4 hrs</div>
+        <div class="hero-stat-label">Avg Turnaround</div>
+      </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="landing-section" id="features">
+      <div class="section-header">
+        <div class="section-tag">ENGINEERED FOR EFFICIENCY</div>
+        <h2 class="section-title">Smart Campus Maintenance Management</h2>
+        <p class="section-subtitle">
+          Built from the ground up for university infrastructure—bridging students, maintenance technicians, and administrators in real time.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-box blue">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <h3 class="feature-title">Interactive Campus Map</h3>
+          <p class="feature-desc">
+            Pinpoint maintenance issues with exact campus building coordinates, floor levels, and specific room landmarks so technicians locate faults immediately.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box purple">
+            <i class="fa-solid fa-timeline"></i>
+          </div>
+          <h3 class="feature-title">Live 4-Step Stepper Tracker</h3>
+          <p class="feature-desc">
+            Students see exact progress step-by-step: Submitted ➔ Assigned ➔ In Progress ➔ Resolved, with automated notification pings.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box green">
+            <i class="fa-solid fa-user-gear"></i>
+          </div>
+          <h3 class="feature-title">Specialized Staff Dispatch</h3>
+          <p class="feature-desc">
+            Administrators triage complaints and assign them directly to technicians categorized by skill: Electrical, Plumbing, HVAC, WiFi/Network, or Civil.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box amber">
+            <i class="fa-solid fa-camera"></i>
+          </div>
+          <h3 class="feature-title">Resolution Proof Photos</h3>
+          <p class="feature-desc">
+            Maintain high work quality with mandatory before-and-after photographic verification uploaded directly by technicians upon completing tasks.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box blue">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3 class="feature-title">Instant Socket.IO Updates</h3>
+          <p class="feature-desc">
+            WebSockets ensure student status updates, admin ticket feeds, and staff work order counters reflect live without reloading the browser.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-box purple">
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h3 class="feature-title">Student Quality Reviews</h3>
+          <p class="feature-desc">
+            Once resolved, reporting students submit 1-to-5 star feedback and reviews, ensuring continuous service accountability and university excellence.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="landing-section" id="howItWorks" style="background: var(--secondary-light); border-radius: var(--radius-xl);">
+      <div class="section-header">
+        <div class="section-tag">SEAMLESS LIFECYCLE</div>
+        <h2 class="section-title">How Fix My Campus Works</h2>
+        <p class="section-subtitle">
+          Three easy steps to transform broken facilities into rapid, high-quality resolutions.
+        </p>
+      </div>
+
+      <div class="workflow-steps-grid">
+        <div class="step-card">
+          <div class="step-number-badge">1</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Spot & Submit</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+            Student or faculty spots an issue, snaps a photo, selects the campus building and room, and submits a ticket in under 30 seconds.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number-badge">2</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Triage & Dispatch</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+            Campus administrator assesses priority level and assigns the ticket to the qualified maintenance technician with specific notes.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number-badge">3</div>
+          <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.5rem;">Fix, Verify & Rate</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+            Staff completes repair, uploads proof photograph, and student receives instant notification to verify and leave star feedback.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Issue Categories Section -->
+    <section class="landing-section" id="categories">
+      <div class="section-header">
+        <div class="section-tag">COVERING ALL INFRASTRUCTURE</div>
+        <h2 class="section-title">Campus Maintenance Categories</h2>
+        <p class="section-subtitle">
+          Report any issue across 8 dedicated facility divisions for targeted dispatch.
+        </p>
+      </div>
+
+      <div class="categories-preview-grid">
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-faucet-drip"></i></div>
+          <div class="category-chip-name">Plumbing & Water</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="category-chip-name">Electrical & Power</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-fan"></i></div>
+          <div class="category-chip-name">HVAC & Climate</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-chair"></i></div>
+          <div class="category-chip-name">Desks & Furniture</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-wifi"></i></div>
+          <div class="category-chip-name">WiFi & Networks</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-trash-can"></i></div>
+          <div class="category-chip-name">Waste & Sanitation</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-shield-virus"></i></div>
+          <div class="category-chip-name">Safety & Hazards</div>
+        </div>
+        <div class="category-chip-card">
+          <div class="category-chip-icon"><i class="fa-solid fa-trowel-bricks"></i></div>
+          <div class="category-chip-name">Civil & Structural</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About SESD Project Section -->
+    <section class="landing-section" id="about" style="border-top: 1px solid var(--border-color); padding-top: 4rem;">
+      <div style="background: linear-gradient(135deg, #1e3a8a, #2563eb); border-radius: var(--radius-xl); padding: 3rem; color: white;">
+        <div style="max-width: 800px;">
+          <span style="background: rgba(255,255,255,0.2); padding: 0.35rem 0.85rem; border-radius: var(--radius-full); font-size: 0.78rem; font-weight: 700; text-transform: uppercase;">
+            Academic Subject: Software Engineering and System Designs (SESD)
+          </span>
+          <h2 style="font-size: 2.2rem; font-weight: 800; margin: 1rem 0 0.75rem;">Fix My Campus Architecture</h2>
+          <p style="font-size: 1.05rem; opacity: 0.9; line-height: 1.6; margin-bottom: 2rem;">
+            Designed to demonstrate end-to-end software engineering principles: role-based access control (RBAC), session management, relational database normalization with MySQL, Socket.IO real-time event streaming, Chart.js visual analytics, and responsive user-centric design.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <button class="btn btn-report" style="background: white; color: #1e3a8a; font-weight: 700;" onclick="App.openLoginModal()">
+              <i class="fa-solid fa-lock-open"></i> Sign In to Demo Portals
+            </button>
+            <button class="btn btn-outline" style="border-color: rgba(255,255,255,0.4); color: white;" onclick="App.openRegisterModal()">
+              <i class="fa-solid fa-user-plus"></i> Create Student Account
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Public Footer -->
+    <footer class="public-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <h3>Fix My Campus</h3>
+          <p>
+            Smart Campus Infrastructure Management and Issue Resolution System. Enhancing university grounds, laboratories, and residential buildings through responsive technology.
+          </p>
+          <div style="font-size: 0.8rem; color: #64748b; margin-top: 1rem;">
+            Academic Subject: <strong>Software Engineering and System Designs (SESD)</strong>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#howItWorks">How It Works</a></li>
+            <li><a href="#categories">Issue Categories</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Portals</h4>
+          <ul>
+            <li><a href="javascript:void(0)" onclick="App.switchRole('student')">Student Portal</a></li>
+            <li><a href="javascript:void(0)" onclick="App.switchRole('staff')">Staff Portal</a></li>
+            <li><a href="javascript:void(0)" onclick="App.switchRole('admin')">Admin Portal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Emergency & Campus Info</h4>
+          <ul>
+            <li><i class="fa-solid fa-phone" style="margin-right: 6px;"></i> Campus Facilities: ext. 4400</li>
+            <li><i class="fa-solid fa-triangle-exclamation" style="margin-right: 6px;"></i> 24/7 Safety Desk: ext. 9111</li>
+            <li><i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> facilities@campus.edu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Fix My Campus. All rights reserved. Built for SESD.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">System Status</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ==============================================================
+       2. AUTHENTICATED APP CONTAINER (Student, Staff & Admin Dashboards)
+       ============================================================== -->
+  <div class="app-container" id="authenticatedAppWrap">
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="appSidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-brand-icon">
+          <i class="fa-solid fa-screwdriver-wrench"></i>
+        </div>
+        <div class="sidebar-brand-text">
+          <h1>Fix My Campus</h1>
+          <span>Smart System</span>
+        </div>
+      </div>
+
+      <div class="sidebar-nav">
+        <div class="nav-section-title">Navigation</div>
+        
+        <div class="nav-item active" data-tab="dashboard">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </div>
+
+        <div class="nav-item" data-tab="complaints">
+          <i class="fa-solid fa-clipboard-list"></i>
+          <span class="student-only">My Complaints</span>
+          <span class="admin-only" style="display:none;">Master Tickets</span>
+          <span class="staff-only" style="display:none;">Work Orders</span>
+        </div>
+
+        <div class="nav-item" data-tab="map">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Campus Map</span>
+        </div>
+
+        <!-- Admin Only Navigation -->
+        <div class="admin-only" style="display:none; flex-direction:column; gap:0.35rem;">
+          <div class="nav-section-title">Administration</div>
+          <div class="nav-item" data-tab="users">
+            <i class="fa-solid fa-users-gear"></i>
+            <span>Students & Staff</span>
+          </div>
+        </div>
+
+        <div class="nav-section-title">Quick Actions</div>
+        <div class="nav-item" onclick="App.openLandingView()">
+          <i class="fa-solid fa-globe"></i>
+          <span>Public Home</span>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-quick-profile">
+          <img id="topUserAvatar" src="/assets/images/default-avatar.svg" alt="Avatar" class="user-avatar" />
+          <div class="user-meta">
+            <div id="topUserName" class="user-meta-name">Loading...</div>
+            <div id="topUserRole" class="user-meta-role">STUDENT</div>
+          </div>
+          <button class="btn-logout-icon" onclick="App.handleLogout()" title="Logout">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      
+      <!-- Top Navigation Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="header-title-box">
+            <h2 id="topHeaderTitle">Campus Operations</h2>
+            <p id="topHeaderSubtitle">Smart Issue Reporting & Infrastructure Management</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Live Role Switcher (For SESD Demonstration & Testing) -->
+          <div class="role-switch-pills" title="Click to instantly switch between Student, Staff, and Admin roles">
+            <button class="role-pill active" data-role="student">
+              <i class="fa-solid fa-graduation-cap"></i> Student
+            </button>
+            <button class="role-pill" data-role="staff">
+              <i class="fa-solid fa-helmet-safety"></i> Staff
+            </button>
+            <button class="role-pill" data-role="admin">
+              <i class="fa-solid fa-shield-halved"></i> Admin
+            </button>
+          </div>
+
+          <!-- Notification Bell -->
+          <div class="notification-btn-box">
+            <button class="notification-bell-btn" id="notifBellBtn" onclick="App.toggleNotificationDropdown()" aria-label="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <div id="notifUnreadDot" class="unread-dot" style="display: none;"></div>
+            </button>
+
+            <!-- Notifications Dropdown -->
+            <div class="notifications-dropdown" id="notificationsDropdown">
+              <div class="notif-header">
+                <h4>Campus Notifications</h4>
+                <button onclick="App.markAllNotificationsRead()">Mark all read</button>
+              </div>
+              <div class="notif-list" id="notifListContainer">
+                <div style="padding: 1.5rem; text-align: center; color: var(--text-light);">Loading notifications...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Page Content Body -->
+      <main class="page-content">
+
+        <!-- ==============================================================
+             A. STUDENT PORTAL WRAPPER
+             ============================================================== -->
+        <div id="studentPortalWrap">
+          
+          <!-- Student Dashboard Tab -->
+          <div class="tab-section" data-tab="dashboard">
+            <div class="dashboard-hero">
+              <div class="hero-text">
+                <h2>Welcome to Fix My Campus</h2>
+                <p>Spotted broken facilities, water leaks, or network issues? Report problems in seconds, track repairs in real-time, and help maintain our campus excellence.</p>
+              </div>
+              <div class="hero-actions">
+                <button class="btn btn-report" onclick="App.openReportModal()">
+                  <i class="fa-solid fa-plus-circle"></i> Report Campus Issue
+                </button>
+              </div>
+            </div>
+
+            <!-- Student KPIs -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon-wrap primary">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Total Reported</h4>
+                  <div id="studentKpiTotal" class="stat-value">0</div>
+                  <div class="stat-sub">Submitted by you</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap warning">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Pending Review</h4>
+                  <div id="studentKpiPending" class="stat-value">0</div>
+                  <div class="stat-sub">Awaiting admin triage</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap info">
+                  <i class="fa-solid fa-person-digging"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>In Progress</h4>
+                  <div id="studentKpiActive" class="stat-value">0</div>
+                  <div class="stat-sub">Assigned to technician</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap success">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Resolved</h4>
+                  <div id="studentKpiResolved" class="stat-value">0</div>
+                  <div class="stat-sub">Repairs finished</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Complaints Quick List -->
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem;">
+              <h3 style="font-size: 1.15rem; font-weight: 800;">My Submitted Complaints</h3>
+              <div style="display: flex; gap: 0.75rem;">
+                <button class="btn btn-sm btn-outline" onclick="App.switchTab('complaints')">
+                  View Full Board <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-sm btn-primary" onclick="App.openReportModal()">
+                  <i class="fa-solid fa-plus"></i> New Issue
+                </button>
+              </div>
+            </div>
+
+            <div id="studentComplaintsContainer">
+              <!-- Rendered via student.js -->
+            </div>
+          </div>
+
+          <!-- Student Complaints Tab -->
+          <div class="tab-section" data-tab="complaints" style="display: none;">
+            <div class="toolbar-card">
+              <div class="search-input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="studentSearchInput" class="form-control" placeholder="Search by ticket #, title, or room..." />
+              </div>
+
+              <div class="filters-cluster">
+                <select id="studentFilterStatus" class="filter-select">
+                  <option value="All">All Statuses</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Assigned">Assigned</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
+                </select>
+
+                <select id="studentFilterCategory" class="filter-select">
+                  <option value="">All Categories</option>
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Electrical">Electrical</option>
+                  <option value="HVAC / AC">HVAC / AC</option>
+                  <option value="Furniture">Furniture</option>
+                  <option value="WiFi / Network">WiFi / Network</option>
+                  <option value="Cleanliness">Cleanliness</option>
+                  <option value="Safety & Security">Safety & Security</option>
+                  <option value="Civil / Infrastructure">Civil / Infrastructure</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <div class="view-toggle-btns">
+                  <button class="view-toggle-btn active" data-view="cards" onclick="StudentPortal.setViewMode('cards')">
+                    <i class="fa-solid fa-grip"></i>
+                  </button>
+                  <button class="view-toggle-btn" data-view="table" onclick="StudentPortal.setViewMode('table')">
+                    <i class="fa-solid fa-list"></i>
+                  </button>
+                </div>
+
+                <button class="btn btn-accent btn-sm" onclick="App.openReportModal()">
+                  <i class="fa-solid fa-plus"></i> Report Issue
+                </button>
+              </div>
+            </div>
+
+            <div id="studentFullComplaintsContainer"></div>
+          </div>
+
+        </div>
+
+
+        <!-- ==============================================================
+             B. ADMIN PORTAL WRAPPER
+             ============================================================== -->
+        <div id="adminPortalWrap" style="display: none;">
+          
+          <!-- Admin Dashboard & Analytics Tab -->
+          <div class="tab-section" data-tab="dashboard">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon-wrap primary">
+                  <i class="fa-solid fa-clipboard-list"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Total Complaints</h4>
+                  <div id="adminKpiTotal" class="stat-value">0</div>
+                  <div class="stat-sub">All campus facilities</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap warning">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Pending Triage</h4>
+                  <div id="adminKpiPending" class="stat-value">0</div>
+                  <div class="stat-sub">Needs staff assignment</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap info">
+                  <i class="fa-solid fa-wrench"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Work In Progress</h4>
+                  <div id="adminKpiProgress" class="stat-value">0</div>
+                  <div class="stat-sub">Active work orders</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap success">
+                  <i class="fa-solid fa-gauge-high"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Resolution Rate</h4>
+                  <div id="adminKpiRate" class="stat-value">0%</div>
+                  <div class="stat-sub">Successfully repaired</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap purple">
+                  <i class="fa-solid fa-stopwatch"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Avg Resolution Time</h4>
+                  <div id="adminKpiAvgTime" class="stat-value">0 hrs</div>
+                  <div class="stat-sub">Report to closure</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Chart.js Visual Analytics -->
+            <div class="charts-grid">
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3><i class="fa-solid fa-chart-pie" style="color:var(--accent); margin-right:6px;"></i> Issues Status Breakdown</h3>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="statusChartCanvas"></canvas>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <div class="chart-header">
+                  <h3><i class="fa-solid fa-chart-column" style="color:var(--accent); margin-right:6px;"></i> Category Distribution</h3>
+                </div>
+                <div class="chart-container-box">
+                  <canvas id="categoryChartCanvas"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- Building Hotspots Chart -->
+            <div class="chart-card" style="margin-bottom: 2rem;">
+              <div class="chart-header">
+                <h3><i class="fa-solid fa-fire" style="color:#ef4444; margin-right:6px;"></i> Campus Facility Hotspots (Active vs Total Issues)</h3>
+              </div>
+              <div class="chart-container-box" style="height: 240px;">
+                <canvas id="buildingChartCanvas"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Admin Master Complaints Board -->
+          <div class="tab-section" data-tab="complaints" style="display: none;">
+            <div class="toolbar-card">
+              <div class="search-input-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="adminSearchInput" class="form-control" placeholder="Search ticket #, reporter, location..." />
+              </div>
+
+              <div class="filters-cluster">
+                <select id="adminFilterStatus" class="filter-select">
+                  <option value="">All Statuses</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Assigned">Assigned</option>
+                  <option value="In Progress">In Progress</option>
+                  <option value="Resolved">Resolved</option>
+                  <option value="Rejected">Rejected</option>
+                </select>
+
+                <select id="adminFilterPriority" class="filter-select">
+                  <option value="">All Priorities</option>
+                  <option value="Critical">Critical</option>
+                  <option value="High">High</option>
+                  <option value="Medium">Medium</option>
+                  <option value="Low">Low</option>
+                </select>
+
+                <select id="adminFilterCategory" class="filter-select">
+                  <option value="">All Categories</option>
+                  <option value="Plumbing">Plumbing</option>
+                  <option value="Electrical">Electrical</option>
+                  <option value="HVAC / AC">HVAC / AC</option>
+                  <option value="Furniture">Furniture</option>
+                  <option value="WiFi / Network">WiFi / Network</option>
+                  <option value="Cleanliness">Cleanliness</option>
+                  <option value="Safety & Security">Safety & Security</option>
+                  <option value="Civil / Infrastructure">Civil / Infrastructure</option>
+                  <option value="Other">Other</option>
+                </select>
+
+                <select id="adminFilterBuilding" class="filter-select">
+                  <option value="">All Buildings</option>
+                  <option value="1">Engineering & Tech Hall</option>
+                  <option value="2">Central Memorial Library</option>
+                  <option value="3">Science & Innovation</option>
+                  <option value="4">Student Activity Center</option>
+                  <option value="5">Administration Building</option>
+                  <option value="6">North Residence Hall</option>
+                  <option value="7">Dining Commons</option>
+                  <option value="8">Varsity Sports Complex</option>
+                </select>
+
+                <span id="adminComplaintsCount" class="badge" style="background:var(--secondary-light); color:var(--text-main);">0 tickets</span>
+              </div>
+            </div>
+
+            <!-- Master Table -->
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Ticket ID</th>
+                    <th>Issue Description</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Assigned Staff</th>
+                    <th>Reporter</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminComplaintsTbody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Admin Users & Staff Directory Tab -->
+          <div class="tab-section" data-tab="users" style="display: none;">
+            <div class="toolbar-card">
+              <div>
+                <h3 style="font-size: 1.1rem; font-weight: 800;">Campus Users & Maintenance Staff Directory</h3>
+                <p style="font-size: 0.82rem; color: var(--text-muted);">Manage technician specializations, student access credentials, and account statuses.</p>
+              </div>
+              <div class="filters-cluster">
+                <button class="btn btn-primary btn-sm" onclick="AdminPortal.openAddStaffModal()">
+                  <i class="fa-solid fa-user-plus"></i> Add Maintenance Staff
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>User ID</th>
+                    <th>Full Name</th>
+                    <th>Campus Email</th>
+                    <th>Role & Specialization</th>
+                    <th>Department</th>
+                    <th>Account Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="adminUsersTbody">
+                  <!-- Rendered via admin.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- ==============================================================
+             C. MAINTENANCE STAFF PORTAL WRAPPER
+             ============================================================== -->
+        <div id="staffPortalWrap" style="display: none;">
+          
+          <div class="tab-section" data-tab="dashboard">
+            <div class="dashboard-hero" style="background: linear-gradient(135deg, #0b1528 0%, #1e293b 50%, #1e3a8a 100%);">
+              <div class="hero-text">
+                <h2>Maintenance Staff Work Orders</h2>
+                <p>View your assigned campus repairs, update live task status, and upload proof of resolution photographs once completed.</p>
+              </div>
+              <div class="hero-actions">
+                <button class="btn btn-report" onclick="App.switchTab('map')">
+                  <i class="fa-solid fa-map"></i> View Task Map
+                </button>
+              </div>
+            </div>
+
+            <!-- Staff KPIs -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon-wrap primary">
+                  <i class="fa-solid fa-list-check"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Total Assigned</h4>
+                  <div id="staffKpiTotal" class="stat-value">0</div>
+                  <div class="stat-sub">Assigned to you</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap warning">
+                  <i class="fa-solid fa-hourglass-start"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Pending Start</h4>
+                  <div id="staffKpiAssigned" class="stat-value">0</div>
+                  <div class="stat-sub">Ready to inspect</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap info">
+                  <i class="fa-solid fa-screwdriver-wrench"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Work In Progress</h4>
+                  <div id="staffKpiProgress" class="stat-value">0</div>
+                  <div class="stat-sub">Under active repair</div>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon-wrap success">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div class="stat-details">
+                  <h4>Resolved Orders</h4>
+                  <div id="staffKpiResolved" class="stat-value">0</div>
+                  <div class="stat-sub">Completed with proof</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Staff Work Orders Filter Bar -->
+            <div class="toolbar-card">
+              <div style="font-weight: 800; font-size: 1.05rem;">My Work Orders</div>
+              <div class="filters-cluster">
+                <button class="btn btn-sm btn-outline staff-filter-btn active" data-filter="all" onclick="StaffPortal.setFilter('all')">All Orders</button>
+                <button class="btn btn-sm btn-outline staff-filter-btn" data-filter="pending" onclick="StaffPortal.setFilter('pending')">Pending</button>
+                <button class="btn btn-sm btn-outline staff-filter-btn" data-filter="progress" onclick="StaffPortal.setFilter('progress')">In Progress</button>
+                <button class="btn btn-sm btn-outline staff-filter-btn" data-filter="resolved" onclick="StaffPortal.setFilter('resolved')">Resolved</button>
+              </div>
+            </div>
+
+            <div id="staffOrdersContainer">
+              <!-- Rendered via staff.js -->
+            </div>
+          </div>
+
+          <div class="tab-section" data-tab="complaints" style="display: none;">
+            <div id="staffOrdersAlternateWrap"></div>
+          </div>
+
+        </div>
+
+
+        <!-- ==============================================================
+             D. INTERACTIVE CAMPUS MAP TAB (Shared across portals)
+             ============================================================== -->
+        <div class="tab-section" data-tab="map" style="display: none;">
+          <div class="campus-map-wrapper">
+            <div class="map-header-bar">
+              <div class="map-title-box">
+                <h3><i class="fa-solid fa-map-location-dot" style="color:var(--accent);"></i> Interactive Campus Map & Issue Hotspots</h3>
+                <p style="font-size:0.82rem; color:var(--text-muted);">Click on any building pin to view details, active issues, or report a problem on location.</p>
+              </div>
+
+              <!-- Map Legend -->
+              <div class="map-legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#3b82f6;"></span> Academic</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6;"></span> Residential</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ef4444;"></span> Dining</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#06b6d4;"></span> Sports & Rec</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#f59e0b;"></span> Admin</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#ef4444; border: 2px solid white; box-shadow: 0 0 0 2px red;"></span> Critical Issue</div>
+              </div>
+            </div>
+
+            <div id="campusMapCanvas" class="map-canvas-container">
+              <!-- Rendered via map.js -->
+            </div>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+
+  <!-- ==============================================================
+       MODALS & DIALOGS
+       ============================================================== -->
+
+  <!-- 1. Authentication Modal (Login / Demo Switch) -->
+  <div class="modal-overlay" id="authLoginModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Sign In to Fix My Campus</h3>
+          <p>Access your student, maintenance staff, or administrator dashboard.</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('authLoginModal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Quick Demo Accounts One-Click Switcher -->
+        <div style="background: var(--primary-light); border: 1px solid #bfdbfe; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1.5rem;">
+          <div style="font-size: 0.8rem; font-weight: 700; color: var(--primary); text-transform: uppercase; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> One-Click SESD Demo Login
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="btn btn-sm btn-outline" style="background: white;" onclick="App.quickDemoLogin('student')">
+              <i class="fa-solid fa-graduation-cap"></i> Student
+            </button>
+            <button class="btn btn-sm btn-outline" style="background: white;" onclick="App.quickDemoLogin('staff')">
+              <i class="fa-solid fa-helmet-safety"></i> Electrician Staff
+            </button>
+            <button class="btn btn-sm btn-outline" style="background: white;" onclick="App.quickDemoLogin('admin')">
+              <i class="fa-solid fa-shield-halved"></i> Administrator
+            </button>
+          </div>
+        </div>
+
+        <form id="authLoginForm">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Campus Email Address <span class="required">*</span></label>
+            <input type="email" id="loginEmail" class="form-control" placeholder="e.g. student@campus.edu" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="loginPassword">Password <span class="required">*</span></label>
+            <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" required />
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: center; gap: 0.4rem; font-size: 0.82rem; color: var(--text-muted); cursor: pointer;">
+              <input type="checkbox" id="loginRememberMe" checked /> Remember session
+            </label>
+            <a href="javascript:void(0)" style="font-size: 0.82rem;" onclick="App.showToast('Password Reset', 'Contact campus IT desk at it-support@campus.edu', 'info')">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-accent" style="width: 100%;">
+            <i class="fa-solid fa-right-to-bracket"></i> Sign In to Account
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.25rem; font-size: 0.85rem; color: var(--text-muted);">
+          Don't have a campus account? 
+          <a href="javascript:void(0)" onclick="App.closeModal('authLoginModal'); App.openRegisterModal();" style="font-weight: 700;">Register as Student</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 2. Student Registration Modal -->
+  <div class="modal-overlay" id="authRegisterModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Create Student Account</h3>
+          <p>Register to submit infrastructure issues and track live repairs on campus.</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('authRegisterModal')">&times;</button>
+      </div>
+
+      <form id="authRegisterForm">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regName">Full Legal Name <span class="required">*</span></label>
+              <input type="text" id="regName" class="form-control" placeholder="e.g., Jordan Reed" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regEmail">Campus Email (.edu) <span class="required">*</span></label>
+              <input type="email" id="regEmail" class="form-control" placeholder="jordan@campus.edu" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regPassword">Password <span class="required">*</span></label>
+              <input type="password" id="regPassword" class="form-control" placeholder="Min. 6 characters" required minlength="6" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regIdentifier">Student / Roll ID <span class="required">*</span></label>
+              <input type="text" id="regIdentifier" class="form-control" placeholder="e.g., STU-2024-8841" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="regDepartment">Academic Department</label>
+              <input type="text" id="regDepartment" class="form-control" placeholder="e.g., Computer Science & Eng" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPhone">Contact Phone</label>
+              <input type="text" id="regPhone" class="form-control" placeholder="+1 (555) 019-2831" />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('authRegisterModal')">Cancel</button>
+          <button type="submit" class="btn btn-accent">
+            <i class="fa-solid fa-user-plus"></i> Complete Registration
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 3. Report Issue Modal -->
+  <div class="modal-overlay" id="reportIssueModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Report Campus Maintenance Issue</h3>
+          <p>Provide details and photographs to help staff locate and resolve the issue quickly.</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('reportIssueModal')">&times;</button>
+      </div>
+
+      <form id="reportIssueForm">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reportTitle">Issue Title <span class="required">*</span></label>
+              <input type="text" id="reportTitle" class="form-control" placeholder="e.g., Leaking water pipe under sink" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reportCategory">Issue Category <span class="required">*</span></label>
+              <select id="reportCategory" class="form-control" required>
+                <option value="">-- Choose Category --</option>
+                <option value="Plumbing">Plumbing (Pipes, Taps, Restrooms)</option>
+                <option value="Electrical">Electrical (Lights, Sockets, Wiring)</option>
+                <option value="HVAC / AC">HVAC / Air Conditioning</option>
+                <option value="Furniture">Furniture (Desks, Chairs, Pods)</option>
+                <option value="WiFi / Network">WiFi / Internet / Network</option>
+                <option value="Cleanliness">Cleanliness & Waste Sanitation</option>
+                <option value="Safety & Security">Safety & Security Hazard</option>
+                <option value="Civil / Infrastructure">Civil / Infrastructure / Structural</option>
+                <option value="Other">Other Maintenance Problem</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Campus Building <span class="required">*</span></label>
+            <input type="hidden" id="reportBuildingId" required />
+            <div class="building-select-grid" id="reportBuildingGrid">
+              <!-- Populated via map.js -->
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="reportLocationId">Floor / Specific Room Zone</label>
+              <select id="reportLocationId" class="form-control">
+                <option value="">-- Select Building First --</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="reportPriority">Urgency Level</label>
+              <select id="reportPriority" class="form-control">
+                <option value="Low">Low - Minor cosmetic inconvenience</option>
+                <option value="Medium" selected>Medium - Normal repair request</option>
+                <option value="High">High - Impairing classroom or lab activities</option>
+                <option value="Critical">Critical - Safety risk / Flooding / Hazard</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reportSpecificLocation">Specific Room # or Spot Landmark</label>
+            <input type="text" id="reportSpecificLocation" class="form-control" placeholder="e.g. 3rd Floor East Wing, Room 304 near projector" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reportDescription">Problem Description <span class="required">*</span></label>
+            <textarea id="reportDescription" class="form-control" rows="3" placeholder="Describe the fault, symptoms, sounds, or immediate risks..." required></textarea>
+          </div>
+
+          <!-- Photo Upload Area -->
+          <div class="form-group">
+            <label class="form-label">Upload Issue Photograph</label>
+            <div class="file-upload-area" id="reportDropArea">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <h5>Drag & Drop Photo or Click to Browse</h5>
+              <p>Supports PNG, JPG, WebP, SVG (Max 10MB)</p>
+              <input type="file" id="reportImageFile" class="file-input-hidden" accept="image/*" />
+            </div>
+
+            <div class="image-preview-box" id="reportImgPreviewBox">
+              <img id="reportImgPreview" src="" alt="Preview" />
+              <button type="button" class="remove-img-btn" id="removeReportImgBtn">&times;</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('reportIssueModal')">Cancel</button>
+          <button type="submit" class="btn btn-accent" id="btnSubmitReport">
+            <i class="fa-solid fa-paper-plane"></i> Submit Campus Complaint
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 4. Complaint Detail & Live Tracker Modal -->
+  <div class="modal-overlay" id="complaintDetailModal">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div style="display:flex; align-items:center; gap:0.6rem;">
+            <h3 id="detailTicketNumber">#FMC-2026-0001</h3>
+            <span id="detailStatusBadge"></span>
+            <span id="detailPriorityBadge"></span>
+          </div>
+          <p id="detailTitle" style="font-size:1.05rem; font-weight:700; color:var(--text-main); margin-top:0.25rem;">Issue Title</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('complaintDetailModal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Live Stepper Progress Tracker -->
+        <div class="tracker-stepper">
+          <div class="stepper-progress-fill" id="stepperProgressFill"></div>
+          
+          <div class="step-node active" data-step="Pending">
+            <div class="step-circle"><i class="fa-solid fa-clipboard-check"></i></div>
+            <div class="step-label">Submitted</div>
+          </div>
+          <div class="step-node" data-step="Assigned">
+            <div class="step-circle"><i class="fa-solid fa-user-gear"></i></div>
+            <div class="step-label">Assigned</div>
+          </div>
+          <div class="step-node" data-step="In Progress">
+            <div class="step-circle"><i class="fa-solid fa-wrench"></i></div>
+            <div class="step-label">In Progress</div>
+          </div>
+          <div class="step-node" data-step="Resolved">
+            <div class="step-circle"><i class="fa-solid fa-circle-check"></i></div>
+            <div class="step-label">Resolved</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1.75rem;">
+          <!-- Left Column -->
+          <div>
+            <div style="background:var(--secondary-light); padding:1.25rem; border-radius:var(--radius-lg); margin-bottom:1.5rem;">
+              <h4 style="font-size:0.95rem; font-weight:700; margin-bottom:0.75rem; color:var(--text-main);">
+                <i class="fa-solid fa-circle-info" style="color:var(--accent); margin-right:4px;"></i> Issue Metadata
+              </h4>
+              <div class="complaint-meta-row">
+                <i class="fa-solid fa-tag"></i> Category: <strong id="detailCategory">Plumbing</strong>
+              </div>
+              <div class="complaint-meta-row">
+                <i class="fa-solid fa-building"></i> Building: <strong id="detailBuilding">Engineering Hall</strong>
+              </div>
+              <div class="complaint-meta-row">
+                <i class="fa-solid fa-location-dot"></i> Specific Spot: <span id="detailLocation">Room 304</span>
+              </div>
+              <div class="complaint-meta-row">
+                <i class="fa-solid fa-user"></i> Reported By: <span id="detailReporter">Emma Watson</span>
+              </div>
+              <div class="complaint-meta-row">
+                <i class="fa-solid fa-calendar-days"></i> Reported On: <span id="detailDate">Nov 23, 2026</span>
+              </div>
+            </div>
+
+            <!-- Technician Box -->
+            <div style="background:var(--bg-surface); border:1px solid var(--border-color); padding:1rem; border-radius:var(--radius-md); margin-bottom:1.5rem;">
+              <div style="font-size:0.75rem; font-weight:700; color:var(--text-light); text-transform:uppercase; margin-bottom:0.35rem;">Assigned Technician</div>
+              <div id="detailStaffBox"></div>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <div style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin-bottom:0.35rem;">Problem Description:</div>
+              <p id="detailDescription" style="font-size:0.9rem; color:var(--text-muted); line-height:1.5;"></p>
+            </div>
+
+            <!-- Resolution Notes -->
+            <div id="detailResolutionNotesBox" style="display:none; background:var(--success-light); border:1px solid #a7f3d0; padding:1rem; border-radius:var(--radius-md); margin-bottom:1.5rem;">
+              <div style="font-size:0.78rem; font-weight:700; color:#065f46; margin-bottom:0.25rem;">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Maintenance Technician Notes:
+              </div>
+              <p id="detailResolutionNotesText" style="font-size:0.85rem; color:#047857;"></p>
+            </div>
+
+            <!-- Photos -->
+            <div id="detailPhotosContainer" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;"></div>
+          </div>
+
+          <!-- Right Column -->
+          <div>
+            <h4 style="font-size:0.95rem; font-weight:700; color:var(--text-main); margin-bottom:0.75rem;">
+              <i class="fa-solid fa-clock-rotate-left" style="color:var(--accent); margin-right:4px;"></i> Activity Timeline & Audit Log
+            </h4>
+            <div class="timeline-list" id="detailTimelineList"></div>
+
+            <!-- Feedback Box -->
+            <div id="detailFeedbackWrap" style="margin-top:1.5rem; display:none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="App.closeModal('complaintDetailModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 5. Assign Staff Modal (Admin) -->
+  <div class="modal-overlay" id="assignStaffModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Assign Maintenance Work Order</h3>
+          <p id="assignTicketNumber">#Ticket</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('assignStaffModal')">&times;</button>
+      </div>
+
+      <form id="assignStaffForm">
+        <div class="modal-body">
+          <input type="hidden" id="assignComplaintId" />
+          
+          <div style="background:var(--secondary-light); padding:0.85rem 1rem; border-radius:var(--radius-md); margin-bottom:1.25rem;">
+            <div id="assignTitle" style="font-weight:700; font-size:0.95rem;">Title</div>
+            <div id="assignCategory" style="font-size:0.8rem; color:var(--text-muted);">Category</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="assignStaffSelect">Choose Maintenance Specialist <span class="required">*</span></label>
+            <select id="assignStaffSelect" class="form-control" required></select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="assignPrioritySelect">Adjust Priority</label>
+            <select id="assignPrioritySelect" class="form-control">
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+              <option value="Critical">Critical</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="assignComment">Assignment Instructions / Work Order Notes</label>
+            <textarea id="assignComment" class="form-control" rows="2" placeholder="e.g. Inspect water valve under sink basin 2. Bring spare 1/2-inch fitting."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('assignStaffModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-user-check"></i> Confirm Assignment
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 6. Update Status Modal (Admin & Staff) -->
+  <div class="modal-overlay" id="updateStatusModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Update Work Order Status</h3>
+          <p>Record maintenance progress or complete ticket resolution.</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('updateStatusModal')">&times;</button>
+      </div>
+
+      <form id="updateStatusForm">
+        <div class="modal-body">
+          <input type="hidden" id="statusComplaintId" />
+
+          <div class="form-group">
+            <label class="form-label" for="statusSelectVal">Complaint Status <span class="required">*</span></label>
+            <select id="statusSelectVal" class="form-control" required>
+              <option value="Assigned">Assigned</option>
+              <option value="In Progress">In Progress (Work started)</option>
+              <option value="Resolved">Resolved (Repairs completed)</option>
+              <option value="Rejected">Rejected (Out of scope / duplicate)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="statusNote">Technician Resolution Remarks</label>
+            <textarea id="statusNote" class="form-control" rows="3" placeholder="Describe actions taken, replaced parts, or testing results..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="statusResolutionPhoto">Proof of Resolution Photograph (Optional)</label>
+            <input type="file" id="statusResolutionPhoto" class="form-control" accept="image/*" />
+            <div style="font-size:0.75rem; color:var(--text-light); margin-top:0.25rem;">Upload photo showing repaired facility or clean area.</div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('updateStatusModal')">Cancel</button>
+          <button type="submit" class="btn btn-success">
+            <i class="fa-solid fa-check"></i> Save Status
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 7. Set Priority Modal (Admin) -->
+  <div class="modal-overlay" id="setPriorityModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Change Issue Priority</h3>
+          <p id="priorityTicketNumber">#Ticket</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('setPriorityModal')">&times;</button>
+      </div>
+
+      <form id="setPriorityForm">
+        <div class="modal-body">
+          <input type="hidden" id="priorityComplaintId" />
+
+          <div class="form-group">
+            <label class="form-label" for="prioritySelectVal">Select Priority Level <span class="required">*</span></label>
+            <select id="prioritySelectVal" class="form-control" required>
+              <option value="Low">Low - Minor cosmetic flaw</option>
+              <option value="Medium">Medium - Regular priority</option>
+              <option value="High">High - Impairing academic functions</option>
+              <option value="Critical">Critical - Safety hazard / Flooding / Power loss</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="priorityReason">Reason for Priority Adjustment</label>
+            <textarea id="priorityReason" class="form-control" rows="2" placeholder="e.g. Lab examination scheduled in 2 hours, needs prompt fix."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('setPriorityModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Priority</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 8. Student Feedback Modal -->
+  <div class="modal-overlay" id="feedbackModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Rate Maintenance Quality</h3>
+          <p>How satisfied are you with the resolution of this issue?</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('feedbackModal')">&times;</button>
+      </div>
+
+      <form id="feedbackForm">
+        <div class="modal-body" style="text-align: center;">
+          <input type="hidden" id="feedbackComplaintId" />
+          <input type="hidden" id="feedbackRatingVal" value="5" />
+
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0.5rem;">Click stars to rate service speed and repair quality:</p>
+          <div class="star-rating-box" id="starRatingBox" style="justify-content: center;">
+            <i class="fa-solid fa-star selected" data-val="1"></i>
+            <i class="fa-solid fa-star selected" data-val="2"></i>
+            <i class="fa-solid fa-star selected" data-val="3"></i>
+            <i class="fa-solid fa-star selected" data-val="4"></i>
+            <i class="fa-solid fa-star selected" data-val="5"></i>
+          </div>
+
+          <div class="form-group" style="text-align: left; margin-top:1.5rem;">
+            <label class="form-label" for="feedbackComment">Feedback Comments / Review</label>
+            <textarea id="feedbackComment" class="form-control" rows="3" placeholder="Share your experience (e.g. Prompt repair, friendly technician, clean work site)..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('feedbackModal')">Cancel</button>
+          <button type="submit" class="btn btn-accent">
+            <i class="fa-solid fa-star"></i> Submit Feedback
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- 9. Add Staff Modal (Admin) -->
+  <div class="modal-overlay" id="addStaffModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <h3>Add Maintenance Staff Member</h3>
+          <p>Register a new maintenance technician for issue assignment.</p>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeModal('addStaffModal')">&times;</button>
+      </div>
+
+      <form id="addStaffForm">
+        <div class="modal-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="staffName">Full Name <span class="required">*</span></label>
+              <input type="text" id="staffName" class="form-control" placeholder="e.g. Robert Keller" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="staffEmail">Campus Email <span class="required">*</span></label>
+              <input type="email" id="staffEmail" class="form-control" placeholder="robert@campus.edu" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="staffPassword">Temporary Password <span class="required">*</span></label>
+              <input type="password" id="staffPassword" class="form-control" placeholder="Minimum 6 characters" required minlength="6" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="staffSpecialization">Specialization <span class="required">*</span></label>
+              <select id="staffSpecialization" class="form-control" required>
+                <option value="Electrical">Electrical</option>
+                <option value="Plumbing">Plumbing</option>
+                <option value="HVAC / AC">HVAC / Air Conditioning</option>
+                <option value="WiFi / Network">WiFi / Network & Telecom</option>
+                <option value="Carpentry & Furniture">Carpentry & Furniture</option>
+                <option value="Civil & Structural">Civil & Structural</option>
+                <option value="General Maintenance">General Facilities Maintenance</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="staffDepartment">Department</label>
+              <input type="text" id="staffDepartment" class="form-control" value="Campus Facilities & Maintenance" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="staffPhone">Contact Phone</label>
+              <input type="text" id="staffPhone" class="form-control" placeholder="+1 (555) 019-3344" />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="App.closeModal('addStaffModal')">Cancel</button>
+          <button type="submit" class="btn btn-accent">
+            <i class="fa-solid fa-plus"></i> Create Staff Account
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Realtime WebSockets -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Modular Vanilla JS Architecture -->
+  <script src="/js/api.js"></script>
+  <script src="/js/socket.js"></script>
+  <script src="/js/map.js"></script>
+  <script src="/js/charts.js"></script>
+  <script src="/js/student.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/staff.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>

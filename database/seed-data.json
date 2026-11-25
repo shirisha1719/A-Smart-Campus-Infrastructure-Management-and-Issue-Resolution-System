@@ -1,0 +1,397 @@
+{
+  "buildings": [
+    {
+      "id": 1,
+      "code": "ENG",
+      "name": "Engineering & Technology Hall",
+      "category": "Academic",
+      "floors": 4,
+      "coordinates_x": 28.5,
+      "coordinates_y": 32.0,
+      "description": "Main engineering classrooms, computer labs, and robotics workshop",
+      "icon": "fa-microchip",
+      "color": "#3b82f6"
+    },
+    {
+      "id": 2,
+      "code": "LIB",
+      "name": "Central Memorial Library",
+      "category": "Academic",
+      "floors": 3,
+      "coordinates_x": 52.0,
+      "coordinates_y": 25.0,
+      "description": "Multi-floor study area, digital archive, and quiet research rooms",
+      "icon": "fa-book-open",
+      "color": "#6366f1"
+    },
+    {
+      "id": 3,
+      "code": "SCI",
+      "name": "Science & Innovation Complex",
+      "category": "Academic",
+      "floors": 4,
+      "coordinates_x": 75.0,
+      "coordinates_y": 35.0,
+      "description": "Chemistry, Physics, and Biotech research laboratories",
+      "icon": "fa-flask",
+      "color": "#10b981"
+    },
+    {
+      "id": 4,
+      "code": "STU_CTR",
+      "name": "Student Activity Center",
+      "category": "Recreational",
+      "floors": 2,
+      "coordinates_x": 42.0,
+      "coordinates_y": 55.0,
+      "description": "Student clubs, auditorium, career center, and lounge",
+      "icon": "fa-users",
+      "color": "#ec4899"
+    },
+    {
+      "id": 5,
+      "code": "ADMIN",
+      "name": "Administration & Registrar Building",
+      "category": "Administrative",
+      "floors": 3,
+      "coordinates_x": 20.0,
+      "coordinates_y": 65.0,
+      "description": "Dean's office, financial aid, admissions, and campus police",
+      "icon": "fa-landmark",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 6,
+      "code": "HOSTEL_N",
+      "name": "North Residence Hall",
+      "category": "Residential",
+      "floors": 5,
+      "coordinates_x": 80.0,
+      "coordinates_y": 68.0,
+      "description": "Undergraduate dormitory, recreation room, and study pods",
+      "icon": "fa-bed",
+      "color": "#8b5cf6"
+    },
+    {
+      "id": 7,
+      "code": "CAFETERIA",
+      "name": "University Dining Commons",
+      "category": "Dining",
+      "floors": 2,
+      "coordinates_x": 55.0,
+      "coordinates_y": 72.0,
+      "description": "Food court, cafe, bakery, and community banquet hall",
+      "icon": "fa-utensils",
+      "color": "#ef4444"
+    },
+    {
+      "id": 8,
+      "code": "SPORTS",
+      "name": "Varsity Sports Complex",
+      "category": "Recreational",
+      "floors": 2,
+      "coordinates_x": 82.0,
+      "coordinates_y": 15.0,
+      "description": "Gymnasium, indoor basketball court, and swimming pool",
+      "icon": "fa-dumbbell",
+      "color": "#06b6d4"
+    }
+  ],
+  "locations": [
+    { "id": 1, "building_id": 1, "floor_name": "Ground Floor", "room_or_zone": "Robotics Lab G-04", "zone_type": "Laboratory" },
+    { "id": 2, "building_id": 1, "floor_name": "2nd Floor", "room_or_zone": "Computer Lab 202", "zone_type": "Computer Lab" },
+    { "id": 3, "building_id": 1, "floor_name": "3rd Floor", "room_or_zone": "Lecture Hall 301", "zone_type": "Classroom" },
+    { "id": 4, "building_id": 1, "floor_name": "3rd Floor", "room_or_zone": "Restroom East Wing", "zone_type": "Restroom" },
+    { "id": 5, "building_id": 2, "floor_name": "1st Floor", "room_or_zone": "Main Circulation Desk", "zone_type": "Service Area" },
+    { "id": 6, "building_id": 2, "floor_name": "2nd Floor", "room_or_zone": "Quiet Reading Hall", "zone_type": "Study Area" },
+    { "id": 7, "building_id": 2, "floor_name": "3rd Floor", "room_or_zone": "Group Discussion Pod B", "zone_type": "Study Area" },
+    { "id": 8, "building_id": 3, "floor_name": "1st Floor", "room_or_zone": "Biochemistry Lab 110", "zone_type": "Laboratory" },
+    { "id": 9, "building_id": 3, "floor_name": "2nd Floor", "room_or_zone": "Physics Demonstration Lab", "zone_type": "Laboratory" },
+    { "id": 10, "building_id": 4, "floor_name": "Ground Floor", "room_or_zone": "Student Lounge & Cafe", "zone_type": "Common Area" },
+    { "id": 11, "building_id": 4, "floor_name": "1st Floor", "room_or_zone": "Auditorium Main Stage", "zone_type": "Auditorium" },
+    { "id": 12, "building_id": 5, "floor_name": "1st Floor", "room_or_zone": "Registrar Counter", "zone_type": "Office" },
+    { "id": 13, "building_id": 6, "floor_name": "2nd Floor", "room_or_zone": "Wing A - Corridor & Restroom", "zone_type": "Residential" },
+    { "id": 14, "building_id": 6, "floor_name": "3rd Floor", "room_or_zone": "Room 312", "zone_type": "Residential" },
+    { "id": 15, "building_id": 7, "floor_name": "Ground Floor", "room_or_zone": "Dish Return & Kitchen Entrance", "zone_type": "Dining Area" },
+    { "id": 16, "building_id": 8, "floor_name": "Ground Floor", "room_or_zone": "Locker Room & Showers", "zone_type": "Sports Facility" }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Campus Operations Admin",
+      "email": "admin@campus.edu",
+      "password_plain": "AdminPassword123!",
+      "role": "admin",
+      "identifier": "ADM-001",
+      "department": "Campus Facilities & Safety",
+      "phone": "+1 (555) 019-2831",
+      "specialization": "Campus Operations Management",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "David Miller",
+      "email": "electrician@campus.edu",
+      "password_plain": "StaffPassword123!",
+      "role": "staff",
+      "identifier": "STF-ELEC-101",
+      "department": "Facilities & Maintenance",
+      "phone": "+1 (555) 019-4822",
+      "specialization": "Electrical",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Sarah Jenkins",
+      "email": "plumber@campus.edu",
+      "password_plain": "StaffPassword123!",
+      "role": "staff",
+      "identifier": "STF-PLUM-102",
+      "department": "Facilities & Maintenance",
+      "phone": "+1 (555) 019-4823",
+      "specialization": "Plumbing",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "name": "Alex Rivera",
+      "email": "network@campus.edu",
+      "password_plain": "StaffPassword123!",
+      "role": "staff",
+      "identifier": "STF-IT-103",
+      "department": "IT & Campus Networks",
+      "phone": "+1 (555) 019-4824",
+      "specialization": "WiFi / Network",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "name": "Emma Watson",
+      "email": "student@campus.edu",
+      "password_plain": "StudentPassword123!",
+      "role": "student",
+      "identifier": "STU-2024-8841",
+      "department": "Computer Science & Engineering",
+      "phone": "+1 (555) 019-5561",
+      "specialization": null,
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "name": "Prof. Robert Langdon",
+      "email": "faculty@campus.edu",
+      "password_plain": "FacultyPassword123!",
+      "role": "student",
+      "identifier": "FAC-2020-0441",
+      "department": "Mechanical & Aerospace Engineering",
+      "phone": "+1 (555) 019-7729",
+      "specialization": null,
+      "status": "active"
+    },
+    {
+      "id": 7,
+      "name": "Liam Chen",
+      "email": "liam@campus.edu",
+      "password_plain": "StudentPassword123!",
+      "role": "student",
+      "identifier": "STU-2024-9120",
+      "department": "Biological Sciences",
+      "phone": "+1 (555) 019-6332",
+      "specialization": null,
+      "status": "active"
+    }
+  ],
+  "sample_complaints": [
+    {
+      "id": 1,
+      "ticket_number": "FMC-2026-0001",
+      "title": "Severe water leak under sink in 3rd floor restroom",
+      "description": "Continuous leak flooding floor tiles near sink basin #2. Potential slipping hazard for students.",
+      "category": "Plumbing",
+      "priority": "High",
+      "status": "Assigned",
+      "building_id": 1,
+      "location_id": 4,
+      "specific_location": "East Wing 3rd Floor Men's Washroom",
+      "user_id": 5,
+      "assigned_to": 3,
+      "image_url": "/assets/images/sample-leak.svg",
+      "resolution_notes": null,
+      "resolution_image_url": null,
+      "created_at": "2026-11-20T09:15:00.000Z",
+      "updated_at": "2026-11-20T10:30:00.000Z"
+    },
+    {
+      "id": 2,
+      "ticket_number": "FMC-2026-0002",
+      "title": "AC unit blowing hot air and making rattling noise",
+      "description": "Air conditioner in Computer Lab 202 is malfunctioning. The room is overheating with 35 computers running.",
+      "category": "HVAC / AC",
+      "priority": "High",
+      "status": "In Progress",
+      "building_id": 1,
+      "location_id": 2,
+      "specific_location": "Computer Lab 202, Ceiling Unit near Projector",
+      "user_id": 6,
+      "assigned_to": 2,
+      "image_url": "/assets/images/sample-ac.svg",
+      "resolution_notes": "Compressor examined. Replacing faulty capacitor and checking refrigerant levels.",
+      "resolution_image_url": null,
+      "created_at": "2026-11-21T11:20:00.000Z",
+      "updated_at": "2026-11-22T14:10:00.000Z"
+    },
+    {
+      "id": 3,
+      "ticket_number": "FMC-2026-0003",
+      "title": "Broken study table and loose power sockets",
+      "description": "Study carrel #14 table leg is fractured and wobbling dangerously. The electrical outlet sparks when plugging in laptops.",
+      "category": "Furniture",
+      "priority": "Medium",
+      "status": "Pending",
+      "building_id": 2,
+      "location_id": 6,
+      "specific_location": "2nd Floor Quiet Zone, Bay C, Desk 14",
+      "user_id": 5,
+      "assigned_to": null,
+      "image_url": "/assets/images/sample-desk.svg",
+      "resolution_notes": null,
+      "resolution_image_url": null,
+      "created_at": "2026-11-22T15:45:00.000Z",
+      "updated_at": "2026-11-22T15:45:00.000Z"
+    },
+    {
+      "id": 4,
+      "ticket_number": "FMC-2026-0004",
+      "title": "No campus WiFi connectivity in North Residence lounge",
+      "description": "Access point FMC-AP-N08 seems offline. Over 40 students unable to connect to eduroam / Campus-Student network.",
+      "category": "WiFi / Network",
+      "priority": "Critical",
+      "status": "Resolved",
+      "building_id": 6,
+      "location_id": 13,
+      "specific_location": "North Residence Hall Ground Floor Lounge",
+      "user_id": 7,
+      "assigned_to": 4,
+      "image_url": "/assets/images/sample-wifi.svg",
+      "resolution_notes": "Power-over-Ethernet switch port was rebooted and firmware re-flashed. WiFi signal test completed with 250Mbps throughput.",
+      "resolution_image_url": "/assets/images/sample-resolved-wifi.svg",
+      "resolved_at": "2026-11-23T16:00:00.000Z",
+      "created_at": "2026-11-23T08:00:00.000Z",
+      "updated_at": "2026-11-23T16:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "ticket_number": "FMC-2026-0005",
+      "title": "Exposed wiring on emergency exit sign",
+      "description": "Plastic housing on emergency exit light has fallen off, leaving 120V exposed wires near eye level.",
+      "category": "Electrical",
+      "priority": "Critical",
+      "status": "In Progress",
+      "building_id": 4,
+      "location_id": 11,
+      "specific_location": "Auditorium Backstage Staircase 2",
+      "user_id": 6,
+      "assigned_to": 2,
+      "image_url": "/assets/images/sample-wire.svg",
+      "resolution_notes": "Circuit temporarily isolated at breaker panel B4. Installing new protected casing.",
+      "resolution_image_url": null,
+      "created_at": "2026-11-23T12:30:00.000Z",
+      "updated_at": "2026-11-23T14:45:00.000Z"
+    }
+  ],
+  "sample_history": [
+    {
+      "complaint_id": 1,
+      "user_id": 5,
+      "action_title": "Complaint Submitted",
+      "comment": "Issue reported by student Emma Watson.",
+      "status": "Pending",
+      "created_at": "2026-11-20T09:15:00.000Z"
+    },
+    {
+      "complaint_id": 1,
+      "user_id": 1,
+      "action_title": "Assigned to Maintenance Staff",
+      "comment": "Admin assigned ticket to Sarah Jenkins (Plumbing Specialist).",
+      "status": "Assigned",
+      "created_at": "2026-11-20T10:30:00.000Z"
+    },
+    {
+      "complaint_id": 2,
+      "user_id": 6,
+      "action_title": "Complaint Submitted",
+      "comment": "Reported by Prof. Robert Langdon.",
+      "status": "Pending",
+      "created_at": "2026-11-21T11:20:00.000Z"
+    },
+    {
+      "complaint_id": 2,
+      "user_id": 1,
+      "action_title": "Priority Set to High & Assigned",
+      "comment": "Admin prioritized as High due to lab temperature threshold and assigned to David Miller.",
+      "status": "Assigned",
+      "created_at": "2026-11-21T13:00:00.000Z"
+    },
+    {
+      "complaint_id": 2,
+      "user_id": 2,
+      "action_title": "Work Begun",
+      "comment": "Staff began troubleshooting HVAC unit.",
+      "status": "In Progress",
+      "created_at": "2026-11-22T14:10:00.000Z"
+    },
+    {
+      "complaint_id": 4,
+      "user_id": 7,
+      "action_title": "Complaint Submitted",
+      "comment": "Reported by Liam Chen.",
+      "status": "Pending",
+      "created_at": "2026-11-23T08:00:00.000Z"
+    },
+    {
+      "complaint_id": 4,
+      "user_id": 1,
+      "action_title": "Critical Priority & Auto-Assigned",
+      "comment": "Assigned to Alex Rivera.",
+      "status": "In Progress",
+      "created_at": "2026-11-23T08:30:00.000Z"
+    },
+    {
+      "complaint_id": 4,
+      "user_id": 4,
+      "action_title": "Resolved with Proof",
+      "comment": "PoE switch cycled and access point tested.",
+      "status": "Resolved",
+      "created_at": "2026-11-23T16:00:00.000Z"
+    }
+  ],
+  "sample_feedback": [
+    {
+      "complaint_id": 4,
+      "user_id": 7,
+      "rating": 5,
+      "comment": "Super quick response! Network was back up before our evening study group started. Thank you Alex!",
+      "created_at": "2026-11-23T16:30:00.000Z"
+    }
+  ],
+  "sample_notifications": [
+    {
+      "user_id": 5,
+      "complaint_id": 1,
+      "title": "Complaint Assigned",
+      "message": "Your ticket FMC-2026-0001 has been assigned to Sarah Jenkins (Plumbing).",
+      "type": "info",
+      "is_read": false,
+      "created_at": "2026-11-20T10:30:00.000Z"
+    },
+    {
+      "user_id": 7,
+      "complaint_id": 4,
+      "title": "Issue Resolved!",
+      "message": "Your ticket FMC-2026-0004 has been resolved. Please rate the service quality.",
+      "type": "success",
+      "is_read": true,
+      "created_at": "2026-11-23T16:00:00.000Z"
+    }
+  ]
+}

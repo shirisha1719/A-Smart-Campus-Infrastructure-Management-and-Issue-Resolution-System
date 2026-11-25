@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="leakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#leakGrad)"/>
+  <rect x="150" y="80" width="300" height="40" rx="8" fill="#94a3b8"/>
+  <rect x="220" y="120" width="160" height="120" rx="6" fill="#cbd5e1"/>
+  <!-- Pipe -->
+  <path d="M 300 240 L 300 310 L 370 310" fill="none" stroke="#64748b" stroke-width="24" stroke-linecap="round"/>
+  <!-- Pipe Joint -->
+  <rect x="282" y="270" width="36" height="20" rx="4" fill="#475569"/>
+  <!-- Water drip and puddle -->
+  <ellipse cx="300" cy="295" rx="5" ry="8" fill="url(#waterGrad)"/>
+  <ellipse cx="300" cy="315" rx="4" ry="7" fill="url(#waterGrad)"/>
+  <ellipse cx="300" cy="350" rx="140" ry="25" fill="url(#waterGrad)" opacity="0.8"/>
+  <circle cx="300" cy="350" r="16" fill="#7dd3fc" opacity="0.6"/>
+  <!-- Alert badge -->
+  <rect x="30" y="30" width="180" height="38" rx="19" fill="#ef4444"/>
+  <text x="120" y="54" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Active Water Leak</text>
+  <text x="500" y="375" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" text-anchor="end">FMC Inspection Photo</text>
+</svg>

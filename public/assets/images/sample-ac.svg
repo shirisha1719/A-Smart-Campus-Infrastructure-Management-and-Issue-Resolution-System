@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <rect width="600" height="400" fill="#0f172a"/>
+  <!-- AC Unit housing -->
+  <rect x="80" y="80" width="440" height="200" rx="12" fill="#f1f5f9" stroke="#94a3b8" stroke-width="4"/>
+  <rect x="110" y="210" width="380" height="40" rx="6" fill="#334155"/>
+  <!-- Louvers -->
+  <line x1="120" y1="222" x2="480" y2="222" stroke="#64748b" stroke-width="3"/>
+  <line x1="120" y1="235" x2="480" y2="235" stroke="#64748b" stroke-width="3"/>
+  <!-- Status LED and Display -->
+  <circle cx="470" cy="120" r="8" fill="#ef4444"/>
+  <rect x="360" y="105" width="80" height="30" rx="4" fill="#020617"/>
+  <text x="400" y="126" fill="#ef4444" font-family="monospace" font-weight="bold" font-size="16" text-anchor="middle">ERR-34</text>
+  <!-- Smoke/Heat lines -->
+  <path d="M 200 70 Q 220 40 210 20" stroke="#f97316" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 250 65 Q 270 35 260 15" stroke="#f97316" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 300 70 Q 320 40 310 20" stroke="#f97316" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <!-- Badge -->
+  <rect x="30" y="330" width="220" height="40" rx="8" fill="#f97316"/>
+  <text x="140" y="355" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Overheating / Rattle Fault</text>
+</svg>

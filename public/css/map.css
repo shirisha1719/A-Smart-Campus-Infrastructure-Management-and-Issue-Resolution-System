@@ -1,0 +1,290 @@
+/* ==============================================================
+   FIX MY CAMPUS - Interactive Campus Map & Location Picker CSS
+   ============================================================== */
+
+.campus-map-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.map-header-bar {
+  padding: 1.25rem 1.75rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: var(--bg-surface);
+}
+
+.map-title-box h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Map Canvas Container */
+.map-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #e2e8f0;
+  background-image: 
+    radial-gradient(#cbd5e1 1.5px, transparent 1.5px),
+    linear-gradient(to right, #f1f5f9 1px, transparent 1px),
+    linear-gradient(to bottom, #f1f5f9 1px, transparent 1px);
+  background-size: 24px 24px, 48px 48px, 48px 48px;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+/* Campus Greenery and Pathways SVG Underlay */
+.campus-svg-base {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Interactive Building Pin */
+.building-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.building-pin:hover {
+  transform: translate(-50%, -60%) scale(1.15);
+  z-index: 30;
+}
+
+.pin-marker {
+  width: 44px;
+  height: 44px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  border: 3px solid white;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.pin-marker i {
+  transform: rotate(45deg);
+  color: white;
+  font-size: 1.1rem;
+}
+
+.pin-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: var(--danger);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  border: 2px solid white;
+  transform: rotate(45deg);
+}
+
+.pin-label {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 42, 0.85);
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Pulse animation for building with critical issues */
+.building-pin.has-critical .pin-marker {
+  background: var(--danger);
+  animation: markerPulse 1.8s infinite;
+}
+
+@keyframes markerPulse {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+  70% { box-shadow: 0 0 0 14px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Building Info Floating Card */
+.map-building-card {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-xl);
+  z-index: 50;
+  animation: slideUpCard 0.25s ease-out;
+}
+
+@keyframes slideUpCard {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.map-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.map-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.3;
+}
+
+.map-card-category {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}
+
+.map-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.map-card-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  background: var(--secondary-light);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+}
+
+.map-mini-stat {
+  text-align: center;
+}
+
+.map-mini-stat-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.map-mini-stat-label {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  text-transform: uppercase;
+}
+
+.map-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Location Selector Grid in Report Modal */
+.building-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.building-select-card {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg-surface);
+  transition: var(--transition);
+}
+
+.building-select-card:hover {
+  border-color: var(--primary);
+  background: var(--primary-light);
+}
+
+.building-select-card.selected {
+  border-color: var(--primary);
+  background: var(--primary-light);
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+.building-select-card i {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.building-select-name {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.building-select-code {
+  font-size: 0.68rem;
+  color: var(--text-light);
+}
